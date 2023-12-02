@@ -4,8 +4,9 @@ from p1 import get2DigitsNumber
 
 
 def extractNumber(input: str) -> list:
+    # get all, include the overlaps!
     regexPattern = (
-        r"(one)|(two)|(three)|(four)|(five)|(six)|(seven)|(eight)|(nine)|(\d)"
+        r"(?=(one)|(two)|(three)|(four)|(five)|(six)|(seven)|(eight)|(nine)|(\d))"
     )
 
     text2number = {
@@ -23,17 +24,14 @@ def extractNumber(input: str) -> list:
     numbers = []
 
     # find all matches in the input
-    for matches in re.findall(regexPattern, input):
+    allMatches = re.findall(regexPattern, input)
+    print(allMatches)
+    for matches in allMatches:
         for match in matches:
             if match and match.isdigit():
                 numbers.append(match)
             elif match:
                 numbers.append(text2number[match])
-            else:
-                if match == "":
-                    ...
-                else:
-                    print(f"match is: {match}")
 
     return numbers
 
@@ -48,8 +46,13 @@ if __name__ == "__main__":
     lines = file.read().splitlines()
     file.close()
     numbers = []
-    for line in lines:
-        numbersInLine = extractNumber(line)
-        number = get2DigitsNumber(numbersInLine)
-        numbers.append(number)
-    print(sum(numbers))
+    with open("debug.log", "w+", encoding="utf-8") as f:
+        for line in lines:
+            numbersInLine = extractNumber(line)
+            number = get2DigitsNumber(numbersInLine)
+            numbers.append(number)
+            debug = f"{numbersInLine} ** {number}"
+            print(debug, file=f)
+        total = sum(numbers)
+        print(f"\n{total}", file=f)
+        print(total)

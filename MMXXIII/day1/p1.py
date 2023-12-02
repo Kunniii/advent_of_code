@@ -22,14 +22,8 @@ if __name__ == "__main__":
     with open("./input.txt", "r", encoding="utf-8") as file:
         lines = file.read().splitlines()
         numbers = []
-        listOfNumbers = []
         for line in lines:
             numbersInLine = extractNumber(line)
-            listOfNumbers.append(numbersInLine)
             number = get2DigitsNumber(numbersInLine)
             numbers.append(number)
         print(sum(numbers))
-
-    with open("p1.out.txt", "w+", encoding="utf-8") as f:
-        for i in listOfNumbers:
-            print(i, file=f)
