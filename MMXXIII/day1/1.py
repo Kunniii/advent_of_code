@@ -2,6 +2,7 @@ def extractNumber(input: str) -> list:
     numbers = []
     for letter in input:
         # i can also check the ascii value!
+        # or, use Regex!!!
         if letter.isdigit():
             # keep this as string for easy concat
             numbers.append(letter)
