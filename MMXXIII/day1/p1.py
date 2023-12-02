@@ -18,7 +18,7 @@ def get2DigitsNumber(numbers: list) -> int:
         return int(numbers[0] + numbers[-1])
 
 
-with open("./input/day1.txt", "r", encoding="utf-8") as file:
+with open("./input/p1.txt", "r", encoding="utf-8") as file:
     lines = file.read().splitlines()
     numbers = []
     for line in lines:
