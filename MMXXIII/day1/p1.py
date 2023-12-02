@@ -19,7 +19,7 @@ def get2DigitsNumber(numbers: list) -> int:
 
 
 if __name__ == "__main__":
-    with open("./input/p1.txt", "r", encoding="utf-8") as file:
+    with open("./input.txt", "r", encoding="utf-8") as file:
         lines = file.read().splitlines()
         numbers = []
         listOfNumbers = []
