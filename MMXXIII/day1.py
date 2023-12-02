@@ -8,12 +8,14 @@ def extractNumber(input: str) -> list:
 
     return numbers
 
+
 def get2DigitsNumber(numbers: list) -> int:
     if len(numbers) == 1:
         # the string times 2
-        return int(numbers[0]*2)
+        return int(numbers[0] * 2)
     else:
-        return int(numbers[0]+numbers[-1])
+        return int(numbers[0] + numbers[-1])
+
 
 with open("./input/day1.txt", "r", encoding="utf-8") as file:
     lines = file.read().splitlines()
