@@ -18,11 +18,18 @@ def get2DigitsNumber(numbers: list) -> int:
         return int(numbers[0] + numbers[-1])
 
 
-with open("./input/p1.txt", "r", encoding="utf-8") as file:
-    lines = file.read().splitlines()
-    numbers = []
-    for line in lines:
-        numbersInLine = extractNumber(line)
-        number = get2DigitsNumber(numbersInLine)
-        numbers.append(number)
-    print(sum(numbers))
+if __name__ == "__main__":
+    with open("./input/p1.txt", "r", encoding="utf-8") as file:
+        lines = file.read().splitlines()
+        numbers = []
+        listOfNumbers = []
+        for line in lines:
+            numbersInLine = extractNumber(line)
+            listOfNumbers.append(numbersInLine)
+            number = get2DigitsNumber(numbersInLine)
+            numbers.append(number)
+        print(sum(numbers))
+
+    with open("p1.out.txt", "w+", encoding="utf-8") as f:
+        for i in listOfNumbers:
+            print(i, file=f)

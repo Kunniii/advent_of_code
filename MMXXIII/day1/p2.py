@@ -1,4 +1,6 @@
 import re
+from sys import argv
+from p1 import get2DigitsNumber
 
 
 def extractNumber(input: str) -> list:
@@ -27,20 +29,24 @@ def extractNumber(input: str) -> list:
                 numbers.append(match)
             elif match:
                 numbers.append(text2number[match])
+            else:
+                if match == "":
+                    ...
+                else:
+                    print(f"match is: {match}")
 
     return numbers
 
 
-def get2DigitsNumber(numbers: list) -> int:
-    if len(numbers) == 1:
-        # the string times 2
-        return int(numbers[0] * 2)
+if __name__ == "__main__":
+    # added option to run test input
+    if len(argv) == 2 and argv[1] == "--test":
+        file = open("./input.test.txt", "r", encoding="utf-8")
     else:
-        return int(numbers[0] + numbers[-1])
+        file = open("./input.txt", "r", encoding="utf-8")
 
-
-with open("./input/p2.txt", "r", encoding="utf-8") as file:
     lines = file.read().splitlines()
+    file.close()
     numbers = []
     for line in lines:
         numbersInLine = extractNumber(line)
