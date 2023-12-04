@@ -21,7 +21,7 @@ class Card:
     def getPoints(self):
         return self.points
 
-    def createCopies(self):
+    def createCopy(self):
         self.copies += 1
 
     def __len__(self):
@@ -40,7 +40,7 @@ if __name__ == "__main__":
             for inc in range(1, winningNumbers + 1):
                 index = i + inc
                 if index < len(cards):
-                    cards[index].createCopies()
+                    cards[index].createCopy()
 
     total = 0
     for card in cards:
