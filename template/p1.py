@@ -16,4 +16,6 @@ def solution(inp: list[str]):
 
 if __name__ == "__main__":
     inp = loadFile()
-    print(solution(inp))
+    fh = open("output.txt", "w+")
+    fh.write(str(solution(inp)))
+    fh.close()
