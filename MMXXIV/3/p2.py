@@ -4,8 +4,8 @@ import re
 def solution(inp: list[str]):
     pattern = "mul\\(\\d{1,3},\\d{1,3}\\)|do\\(\\)|don't\\(\\)"
     total = 0
+    skip = False
     for line in inp:
-        skip = False
         matches = re.findall(pattern, line)
         for match in matches:
             if match == "don't()":
