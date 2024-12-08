@@ -1,5 +1,6 @@
 from sys import argv
 from logger import Logger
+
 logger = Logger()
 log = logger.log
 
@@ -18,6 +19,7 @@ def loadFile() -> list[str]:
 def solution(inp: list[str]):
     log("Debug")
     return inp
+
 
 if __name__ == "__main__":
     inp = loadFile()
