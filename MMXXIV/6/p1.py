@@ -21,6 +21,7 @@ class Board:
     matrix: list[list]
     w: int
     h: int
+    visited_pos: set[tuple[int, int]] = set()
 
     def __init__(self, w: int, h: int, obstacles: list[tuple[int, int]]):
         self.w, self.h = w, h
@@ -37,14 +38,11 @@ class Board:
         return s
 
     def visit(self, x: int, y: int):
+        self.visited_pos.add((x, y))
         self.matrix[x][y] = "X"
 
     def visited(self):
-        s = 0
-        for i in self.matrix:
-            s += i.count("X")
-        return s
-
+        return len(self.visited_pos)
 
 class Guard:
     def __init__(self, x: int, y: int, board: Board):
@@ -94,13 +92,10 @@ class Guard:
         return (new_x, new_y) in self.board.obstacles
 
     def move(self):
-        log(f"Current: {self.x, self.y}")
         while self.faces_obstacle():
-            log(f"Faces obstacle at {self.get_new_pos()}")
             self.turn()
         self.x, self.y = self.get_new_pos()
         self.board.visit(self.x, self.y)
-        log(f"Moved {self.accelerate} at {self.get_new_pos()}")
 
 
 def solution(inp: list[str]):
