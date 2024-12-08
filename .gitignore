@@ -1,6 +1,5 @@
 **/__pycache__
 **/*.log
 
-input*.txt
-output*.txt
+*.txt
 !template/*
