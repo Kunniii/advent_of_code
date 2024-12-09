@@ -24,7 +24,6 @@ def solution(inp: list[str]):
     blocks: list[str] = []
     isFile = True
     for i in range(len(disk_map)):
-        log("Creating file system", cmd=True)
         if isFile:
             file = int(disk_map[i])
             files[i] = file
@@ -37,18 +36,18 @@ def solution(inp: list[str]):
         isFile = not isFile
 
     len_blocks = len(blocks)
-    log((blocks))
+    # log((blocks))
 
     for i in range(len_blocks):
         if blocks[i] == ".":
             for j in range(len_blocks - 1, i, -1):
                 if blocks[j] != ".":
-                    log(f"Swapping {i} - {j} ({blocks[j]})", cmd=True)
                     t = blocks[i]
                     blocks[i] = blocks[j]
                     blocks[j] = t
                     break
-    log((blocks))
+        # log(''.join(blocks), cmd=True)
+    # log((blocks))
 
     total = 0
 
@@ -56,10 +55,10 @@ def solution(inp: list[str]):
         s = blocks[i]
         if s.isnumeric():
             log(f"Calc {s}*{i}", cmd=True)
-            total += int(f) * i
+            total += int(s) * i
 
     return total
-
+type(1)
 
 if __name__ == "__main__":
     inp = loadFile()
