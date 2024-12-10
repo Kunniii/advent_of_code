@@ -19,19 +19,15 @@ def loadFile() -> list[str]:
 def solution(inp: list[str]):
     disk_map = inp[0]
 
-    files: dict[int, int] = {}
-    free_spaces: dict[int, int] = {}
     blocks: list[str] = []
     isFile = True
     for i in range(len(disk_map)):
         if isFile:
             file = int(disk_map[i])
-            files[i] = file
             for f in range(1, file+1):
                 blocks.append(str(i // 2))
         else:
             free_space = int(disk_map[i])
-            free_spaces[i] = free_space
             blocks += list("." * free_space)
         isFile = not isFile
 
@@ -54,11 +50,10 @@ def solution(inp: list[str]):
     for i in range(len_blocks):
         s = blocks[i]
         if s.isnumeric():
-            log(f"Calc {s}*{i}", cmd=True)
+            # log(f"Calc {s}*{i}", cmd=True)
             total += int(s) * i
-
+    log(total, cmd=True)
     return total
-type(1)
 
 if __name__ == "__main__":
     inp = loadFile()
